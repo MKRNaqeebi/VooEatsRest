@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import datetime
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -37,6 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #third party
+    
+    'rest_framework',
+    'rest_framework.authtoken',
+
+    # custom
+
+    'AuthInterface',
+    'ShopInterface',
 ]
 
 MIDDLEWARE = [
@@ -99,6 +110,31 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+
+JWT_AUTH = {
+    'JWT_ALLOW_REFRESH': True,
+    # 'JWT_REFREASH_EXPIRATION_DELTA': datetime.timedelta(seconds=30),
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=3000),
+}
+
+AUTH_USER_MODEL = 'AuthInterface.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
