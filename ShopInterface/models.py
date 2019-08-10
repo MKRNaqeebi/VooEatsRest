@@ -12,7 +12,7 @@ class Shop(models.Model):
     2. Add shop name 
     3. Add shop address and details (Optional)
     '''
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
     contact_number = models.CharField(
         _('Contact Number'), max_length=32, null=True, blank=True)
     logo = models.ImageField()
