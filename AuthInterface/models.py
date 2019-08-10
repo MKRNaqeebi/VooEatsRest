@@ -14,3 +14,5 @@ class User(AbstractUser):
     '''
     contact_number = models.CharField(
         _('Contact Number'), max_length=32, null=True, blank=True)
+    subscription = models.CharField(
+        _('Subscription'), max_length=32, null=True, blank=True)
