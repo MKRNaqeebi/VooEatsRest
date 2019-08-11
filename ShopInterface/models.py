@@ -43,3 +43,42 @@ class ShopMember(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     role = models.CharField(
         max_length=16, choices=ROLE_CHOICES, default='sender')
+
+class ProductModel(models.Model):
+    """
+    2. Model & price (allow them to add more, 
+        objective of this is like you sell pizza,
+        but we have pure pizza, pizza + topping. 
+        Or you selling shirt but you have many size or colors price is differentl. 
+        So, we need to add more option in model and set price as individual.
+        And for user view must be showed as drop down)
+    """
+    price = models.FloatField()
+    name = models.CharField(max_length=256)
+
+
+class Product(models.Model):
+    """
+    This is for setting product and add including
+    1. Product name
+    2. 
+    3. Unit price ............... (pieces
+    4. Shipping cost ................. (By product, by qty)
+
+    --------------------------------------------------------------------------
+    Step 1 : Select shop
+    Step 2 : Add product
+    Step 3 : Keep personal information for shipping. 
+    Step 4 : Selection shipping (Optional related on owner shipping setting. 
+        If they allow to have normal delivery and express. 
+        This step will be let user to select. 
+        If other options, we cannot allow them to select)
+    Step 5 : Real-time calculation total amount.
+
+    ------------------------------------------------------
+    Please make the user view also. Please make sure that it's responsive by e-mail.
+    """
+
+    name = models.CharField(max_length=256)
+    model = models.ManyToManyField(ProductModel)
+    shipping_cost = models.FloatField()
