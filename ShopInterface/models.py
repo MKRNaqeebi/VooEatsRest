@@ -32,5 +32,14 @@ class ShopMember(models.Model):
 
     We will limit the a number of member and shop details add based on subscription plan
     Please see more in subscription plan
-    
+
     '''
+    ROLE_CHOICES = (
+        ('sender', 'Sender'),
+        ('editor', 'Editor'),
+        ('admin', 'Admin'),
+    )
+    shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    role = models.CharField(
+        max_length=16, choices=ROLE_CHOICES, default='sender')
