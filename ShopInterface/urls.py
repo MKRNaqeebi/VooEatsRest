@@ -2,10 +2,8 @@
 
 """
 from django.urls import path
-from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token,  verify_jwt_token
+from .views import ShopViewSet
 
 urlpatterns = [
-    path('getToken/', obtain_jwt_token),
-    path('tokenRefresh/', refresh_jwt_token),
-    path('tokenVerify/', verify_jwt_token),
+    path('shop/', ShopViewSet.as_view(), name='shop'),
 ]

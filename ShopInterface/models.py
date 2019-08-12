@@ -15,12 +15,13 @@ class Shop(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     contact_number = models.CharField(
         _('Contact Number'), max_length=32, null=True, blank=True)
-    logo = models.ImageField()
+    logo = models.ImageField(upload_to='ShopInterface/media/logo')
     name = models.CharField(
         _('Shop Name'), max_length=128)
     address = models.CharField(
         _('Shop adress'), max_length=256, null=True, blank=True)
     details = models.TextField(null=True, blank=True)
+    coordinates = models.CharField(max_length=256)
 
 
 class ShopMember(models.Model):
@@ -44,7 +45,8 @@ class ShopMember(models.Model):
     role = models.CharField(
         max_length=16, choices=ROLE_CHOICES, default='sender')
 
-class ProductModel(models.Model):
+
+class ProductModel(object):
     """
     2. Model & price (allow them to add more, 
         objective of this is like you sell pizza,
@@ -53,11 +55,11 @@ class ProductModel(models.Model):
         So, we need to add more option in model and set price as individual.
         And for user view must be showed as drop down)
     """
-    price = models.FloatField()
-    name = models.CharField(max_length=256)
+    # price = models.FloatField()
+    # name = models.CharField(max_length=256)
 
 
-class Product(models.Model):
+class Product(object):
     """
     This is for setting product and add including
     1. Product name
@@ -79,6 +81,6 @@ class Product(models.Model):
     Please make the user view also. Please make sure that it's responsive by e-mail.
     """
 
-    name = models.CharField(max_length=256)
-    model = models.ManyToManyField(ProductModel)
-    shipping_cost = models.FloatField()
+    # name = models.CharField(max_length=256)
+    # model = models.ManyToManyField(ProductModel)
+    # shipping_cost = models.FloatField()
