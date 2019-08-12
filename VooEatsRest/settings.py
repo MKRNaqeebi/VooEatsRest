@@ -157,10 +157,9 @@ USE_TZ = True
 
 
 CORS_ORIGIN_WHITELIST = (
-    'vooeats.herokuapp.com',
-    'localhost',
-    'localhost:8080',
-    '127.0.0.1'
+    'https://vooeats.herokuapp.com',
+    'http://localhost',
+    'http://localhost:8080',
 )
 
 # Static files (CSS, JavaScript, Images)
