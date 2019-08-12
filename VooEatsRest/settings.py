@@ -153,6 +153,13 @@ USE_L10N = True
 USE_TZ = True
 
 
+CORS_ORIGIN_WHITELIST = (
+    'vooeats.herokuapp.com',
+    'localhost',
+    'localhost:8080',
+    '127.0.0.1'
+)
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
