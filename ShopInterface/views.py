@@ -6,6 +6,7 @@ from .serializers import ShopSerializer
 
 class ShopViewSet(generics.ListCreateAPIView):
     """ API endpoint that sorts the circuits by given parameter """
+    permission_classes = (permissions.AllowAny,)
     serializer_class = ShopSerializer
     queryset = Shop.objects.all()
     
