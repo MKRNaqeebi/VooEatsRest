@@ -160,6 +160,7 @@ CORS_ORIGIN_WHITELIST = (
     'https://vooeats.herokuapp.com',
     'http://localhost',
     'http://localhost:8080',
+    os.getenv('FRONT_HOST')
 )
 
 # Static files (CSS, JavaScript, Images)
