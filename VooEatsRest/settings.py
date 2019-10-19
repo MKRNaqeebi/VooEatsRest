@@ -159,6 +159,8 @@ USE_TZ = True
 CORS_ORIGIN_WHITELIST = (
     'https://vooeats.herokuapp.com',
     'http://localhost',
+    'https://www.vooeats.com',
+    'https://vooeats.com',
     'http://localhost:8080',
     os.getenv('FRONT_HOST')
 )
