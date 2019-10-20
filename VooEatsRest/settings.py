@@ -158,6 +158,7 @@ USE_TZ = True
 
 CORS_ORIGIN_WHITELIST = (
     'https://www.vooeats.com',
+    'https://vooeats.com',
     'http://localhost:8080',
     os.getenv('FRONT_HOST')
 )

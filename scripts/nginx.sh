@@ -7,11 +7,6 @@ project = VooEatsRest
 uid = mkrnaqeebi
 base = /home/mkrnaqeebi
 
-for-readline = %(base)/env.txt
-  env = %(_)
-endfor = 
-
-
 chdir = %(base)/%(project)
 home = %(base)/%(project)/venv
 module = VooEatsRest.wsgi:application
@@ -42,12 +37,12 @@ NotifyAccess=all
 WantedBy=multi-user.target
 EOL
 
-# ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled
 
-# nginx -t
+nginx -t
 
-# systemctl restart nginx
-# systemctl daemon-reload
+systemctl restart nginx
+systemctl daemon-reload
 systemctl start uwsgi
 
 
